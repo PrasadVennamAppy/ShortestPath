@@ -1,6 +1,7 @@
 package com.projects.social.students.myapplication
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -10,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val V = 6
         val source = 0
-
+        val output: StringBuilder = java.lang.StringBuilder()
         // connected edges
         val adj: MutableList<MutableList<Node>> = ArrayList()
 
@@ -33,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         d.dijkstra(adj, source)
 
         // Print the shortest path to all the nodes
-        println("The shorted path from node :")
         for (i in d.dist.indices) {
-            println(source.toString() + " to " + i + " is " + d.dist[i])
+            output.append(source.toString() + " to " + i + " is " + d.dist[i]+"\n")
         }
+        findViewById<TextView>(R.id.tv_otpt).text = output
     }
 }
